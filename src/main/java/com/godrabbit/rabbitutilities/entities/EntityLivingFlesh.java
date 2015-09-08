@@ -20,6 +20,7 @@ public class EntityLivingFlesh extends EntityMob{
 
 	public EntityLivingFlesh(World worldIn) {
 		super(worldIn);
+		//this.moveHelper = new EntitySlime
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPlayer.class, 1.0D, false));
 		this.tasks.addTask(5, new EntityAIWander(this, 0.8D));

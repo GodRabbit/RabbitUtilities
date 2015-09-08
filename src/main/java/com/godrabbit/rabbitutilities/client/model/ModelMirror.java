@@ -13,12 +13,12 @@ public class ModelMirror extends ModelBase{
 		textureWidth = 128;
 	    textureHeight = 128;
 	    
-	      body = new ModelRenderer(this, 0, 0);
-	      body.addBox(-8F, 0F, -16F, 16, 1, 32);
-	      body.setRotationPoint(0F, 8F, 0F);
-	      body.setTextureSize(128, 128);
-	      body.mirror = true;
-	      setRotation(body, 1.570796F, 0F, 0F);
+	    body = new ModelRenderer(this, 0, 0);
+	    body.addBox(-8F, 0F, -16F, 16, 1, 32);
+	    body.setRotationPoint(0F, 8F, 0F);
+	    body.setTextureSize(128, 128);
+	    body.mirror = true;
+	    setRotation(body, 1.570796F, 0F, 0F);
 	}
 	
 	private void setRotation(ModelRenderer model, float x, float y, float z)
