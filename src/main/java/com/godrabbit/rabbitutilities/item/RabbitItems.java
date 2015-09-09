@@ -7,6 +7,7 @@ import com.godrabbit.rabbitutilities.tool.FleshBoneAxe;
 import com.godrabbit.rabbitutilities.tool.FleshBucket;
 import com.godrabbit.rabbitutilities.tool.FleshEaterSword;
 import com.godrabbit.rabbitutilities.tool.FleshPickaxe;
+import com.godrabbit.rabbitutilities.tool.TeleporterItem;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -32,6 +33,7 @@ public class RabbitItems {
 	public static Item flesh_bone_axe;
 	public static Item black_void_ingot;
 	public static Item human_seeds;
+	public static Item teleporter;
 	
 	public static void init()
 	{
@@ -55,6 +57,11 @@ public class RabbitItems {
 		flesh_bone_axe = new FleshBoneAxe()
 		.setUnlocalizedName("flesh_bone_axe")
 		.setCreativeTab(RabbitUtilities.RabbitTab);
+		
+		teleporter = new TeleporterItem()
+		.setUnlocalizedName("teleporter")
+		.setCreativeTab(RabbitUtilities.RabbitTab);
+		
 		
 		//items:
 		flesh_item=new FleshItem()
@@ -118,6 +125,7 @@ public class RabbitItems {
 		GameRegistry.registerItem(flesh_bone_axe, flesh_bone_axe.getUnlocalizedName().substring(5));
 		GameRegistry.registerItem(black_void_ingot, black_void_ingot.getUnlocalizedName().substring(5));
 		GameRegistry.registerItem(human_seeds, human_seeds.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(teleporter, teleporter.getUnlocalizedName().substring(5));
 	}
 	
 	public static void registerRenders()
@@ -137,6 +145,7 @@ public class RabbitItems {
 		registerRender(flesh_bone_axe);
 		registerRender(black_void_ingot);
 		registerRender(human_seeds);
+		registerRender(teleporter);
 	}
 	
 	public static void registerRender(Item item)
