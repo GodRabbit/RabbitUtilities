@@ -19,6 +19,7 @@ public class TeleporterItem extends Item{
 	
 	public TeleporterItem()
 	{
+		this.setMaxStackSize(1);
 		this.setMaxDamage(1500);
 	}
 	

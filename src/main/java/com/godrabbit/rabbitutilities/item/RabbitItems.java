@@ -7,6 +7,7 @@ import com.godrabbit.rabbitutilities.tool.FleshBoneAxe;
 import com.godrabbit.rabbitutilities.tool.FleshBucket;
 import com.godrabbit.rabbitutilities.tool.FleshEaterSword;
 import com.godrabbit.rabbitutilities.tool.FleshPickaxe;
+import com.godrabbit.rabbitutilities.tool.SpeculumonomiconItem;
 import com.godrabbit.rabbitutilities.tool.TeleporterItem;
 
 import net.minecraft.block.Block;
@@ -34,6 +35,7 @@ public class RabbitItems {
 	public static Item black_void_ingot;
 	public static Item human_seeds;
 	public static Item teleporter;
+	public static Item speculumonomicon;
 	
 	public static void init()
 	{
@@ -60,6 +62,10 @@ public class RabbitItems {
 		
 		teleporter = new TeleporterItem()
 		.setUnlocalizedName("teleporter")
+		.setCreativeTab(RabbitUtilities.RabbitTab);
+		
+		speculumonomicon = new SpeculumonomiconItem()
+		.setUnlocalizedName("speculumonomicon")
 		.setCreativeTab(RabbitUtilities.RabbitTab);
 		
 		
@@ -126,6 +132,7 @@ public class RabbitItems {
 		GameRegistry.registerItem(black_void_ingot, black_void_ingot.getUnlocalizedName().substring(5));
 		GameRegistry.registerItem(human_seeds, human_seeds.getUnlocalizedName().substring(5));
 		GameRegistry.registerItem(teleporter, teleporter.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(speculumonomicon, speculumonomicon.getUnlocalizedName().substring(5));
 	}
 	
 	public static void registerRenders()
@@ -146,6 +153,7 @@ public class RabbitItems {
 		registerRender(black_void_ingot);
 		registerRender(human_seeds);
 		registerRender(teleporter);
+		registerRender(speculumonomicon);
 	}
 	
 	public static void registerRender(Item item)

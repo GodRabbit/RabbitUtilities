@@ -98,6 +98,11 @@ public class RabbitUtilities {
 				"  F",
 				"FFF", 'F', RabbitItems.flesh_item);
 		
+		GameRegistry.addShapedRecipe(new ItemStack(RabbitItems.speculumonomicon), 
+				"AQA",
+				"QBQ",
+				"AQA", 'A', RabbitItems.anapaite_dust, 'B', Items.book, 'Q', Items.quartz);
+		
 		//Enchanted books recipes
 		ItemStack power=new ItemStack(Items.enchanted_book, 1);
 		power.addEnchantment(Enchantment.power, 1);
