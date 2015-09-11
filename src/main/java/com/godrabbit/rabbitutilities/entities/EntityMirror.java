@@ -1,5 +1,7 @@
 package com.godrabbit.rabbitutilities.entities;
 
+import com.godrabbit.rabbitutilities.item.RabbitItems;
+
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAIPanic;
@@ -9,6 +11,7 @@ import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
@@ -49,6 +52,19 @@ public class EntityMirror extends EntityMob implements IMob{
 	protected String getHurtSound() {
 		
 		return "dig.glass";
+	}
+	
+	@Override
+	protected void dropFewItems(boolean p_70628_1_, int p_70628_2_) {
+		
+		int j = this.rand.nextInt(2 + p_70628_2_);
+        int k;
+
+        for (k = 0; k < j; ++k)
+        {
+            this.dropItem(RabbitItems.mirror_shard, 1);
+        }
+		super.dropFewItems(p_70628_1_, p_70628_2_);
 	}
 	
 }

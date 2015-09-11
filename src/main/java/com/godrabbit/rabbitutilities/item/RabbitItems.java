@@ -36,6 +36,7 @@ public class RabbitItems {
 	public static Item human_seeds;
 	public static Item teleporter;
 	public static Item speculumonomicon;
+	public static Item mirror_shard;
 	
 	public static void init()
 	{
@@ -110,7 +111,9 @@ public class RabbitItems {
 		.setUnlocalizedName("human_seeds")
 		.setCreativeTab(RabbitUtilities.RabbitTab);
 		
-		
+		mirror_shard = new MirrorShardItem()
+		.setUnlocalizedName("mirror_shard")
+		.setCreativeTab(RabbitUtilities.RabbitTab);
 		
 	}
 	
@@ -133,6 +136,7 @@ public class RabbitItems {
 		GameRegistry.registerItem(human_seeds, human_seeds.getUnlocalizedName().substring(5));
 		GameRegistry.registerItem(teleporter, teleporter.getUnlocalizedName().substring(5));
 		GameRegistry.registerItem(speculumonomicon, speculumonomicon.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(mirror_shard, mirror_shard.getUnlocalizedName().substring(5));
 	}
 	
 	public static void registerRenders()
@@ -154,6 +158,7 @@ public class RabbitItems {
 		registerRender(human_seeds);
 		registerRender(teleporter);
 		registerRender(speculumonomicon);
+		registerRender(mirror_shard);
 	}
 	
 	public static void registerRender(Item item)
