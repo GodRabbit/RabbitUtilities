@@ -49,8 +49,8 @@ public class HumanSeedsItem extends Item{
 			/*temp.fromWorld(world, new BlockPos(x,y,z), 9, 9, 9);
 			temp.spawnInWorld(world, pos);
 			temp.recordToFile("cow", DungeonFileFormat.JavaCode);*/
-			RabbitTemplates r=new RabbitTemplates();
-			r.cow.spawnInWorld(world, pos);
+			//RabbitTemplates r=new RabbitTemplates();
+			RabbitTemplates.House.spawnInWorld(world, pos);
 		}
 		return super.onItemUse(stack, player, world, pos, side, hitX, hitY, hitZ);
 	}
