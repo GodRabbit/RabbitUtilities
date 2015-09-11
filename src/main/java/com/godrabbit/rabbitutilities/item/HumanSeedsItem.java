@@ -2,7 +2,9 @@ package com.godrabbit.rabbitutilities.item;
 
 import com.godrabbit.rabbitutilities.entities.EntityLivingFlesh;
 import com.godrabbit.rabbitutilities.entities.EntityMirror;
+import com.godrabbit.rabbitutilities.libs.DungeonFileFormat;
 import com.godrabbit.rabbitutilities.libs.DungeonTemplate;
+import com.godrabbit.rabbitutilities.libs.RabbitTemplates;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -44,8 +46,11 @@ public class HumanSeedsItem extends Item{
 			int x=stack.getTagCompound().getInteger("tpX");
 			int y=stack.getTagCompound().getInteger("tpY");
 			int z=stack.getTagCompound().getInteger("tpZ");
-			temp.fromWorld(world, new BlockPos(x,y,z), 9, 9, 9);
+			/*temp.fromWorld(world, new BlockPos(x,y,z), 9, 9, 9);
 			temp.spawnInWorld(world, pos);
+			temp.recordToFile("cow", DungeonFileFormat.JavaCode);*/
+			RabbitTemplates r=new RabbitTemplates();
+			r.cow.spawnInWorld(world, pos);
 		}
 		return super.onItemUse(stack, player, world, pos, side, hitX, hitY, hitZ);
 	}
