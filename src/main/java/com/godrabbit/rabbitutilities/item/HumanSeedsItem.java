@@ -2,10 +2,12 @@ package com.godrabbit.rabbitutilities.item;
 
 import com.godrabbit.rabbitutilities.entities.EntityLivingFlesh;
 import com.godrabbit.rabbitutilities.entities.EntityMirror;
+import com.godrabbit.rabbitutilities.libs.DungeonTemplate;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
@@ -21,11 +23,29 @@ public class HumanSeedsItem extends Item{
 	public boolean onItemUse(ItemStack stack, EntityPlayer player,
 			World world, BlockPos pos, EnumFacing side, float hitX,
 			float hitY, float hitZ) {
-		if(!world.isRemote)
+		if(stack.getTagCompound() == null)
+			stack.setTagCompound(new NBTTagCompound()); 
+		if(!stack.getTagCompound().hasKey("tpX"))
+			stack.getTagCompound().setInteger("tpX", player.getPosition().getX());
+		if(!stack.getTagCompound().hasKey("tpY"))
+			stack.getTagCompound().setInteger("tpY", player.getPosition().getY());
+		if(!stack.getTagCompound().hasKey("tpZ"))
+			stack.getTagCompound().setInteger("tpZ", player.getPosition().getZ());
+		DungeonTemplate temp=new DungeonTemplate();
+		
+		if(player.isSneaking())
 		{
-			EntityMirror bob=new EntityMirror(world);
-			bob.setPosition(pos.getX()+3, pos.getY()+1, pos.getZ()+3);
-			world.spawnEntityInWorld(bob);
+			stack.getTagCompound().setInteger("tpX", player.getPosition().getX());
+			stack.getTagCompound().setInteger("tpY", player.getPosition().getY());
+			stack.getTagCompound().setInteger("tpZ", player.getPosition().getZ());
+		}
+		else
+		{
+			int x=stack.getTagCompound().getInteger("tpX");
+			int y=stack.getTagCompound().getInteger("tpY");
+			int z=stack.getTagCompound().getInteger("tpZ");
+			temp.fromWorld(world, new BlockPos(x,y,z), 9, 9, 9);
+			temp.spawnInWorld(world, pos);
 		}
 		return super.onItemUse(stack, player, world, pos, side, hitX, hitY, hitZ);
 	}

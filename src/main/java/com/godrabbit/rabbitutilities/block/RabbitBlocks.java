@@ -18,6 +18,10 @@ public class RabbitBlocks {
 	public static Block apatite_ore;
 	public static Block human_sponge;
 	
+	//template related blocks
+	public static Block template_start;
+	public static Block template_end;
+	
 	public static void init()
 	{
 		aikimite_ore=new AikimiteOreBlock()
@@ -44,6 +48,15 @@ public class RabbitBlocks {
 		.setUnlocalizedName("human_sponge")
 		.setCreativeTab(RabbitUtilities.RabbitTab);
 		
+		//template blocks
+		template_start = new TemplateStartBlock()
+		.setUnlocalizedName("template_start")
+		.setCreativeTab(RabbitUtilities.RabbitTab);
+		
+		template_end = new TemplateEndBlock()
+		.setUnlocalizedName("template_end")
+		.setCreativeTab(RabbitUtilities.RabbitTab);
+		
 	}
 	
 	public static void register()
@@ -54,6 +67,8 @@ public class RabbitBlocks {
 		GameRegistry.registerBlock(flesh_block, flesh_block.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(apatite_ore, apatite_ore.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(human_sponge, human_sponge.getUnlocalizedName().substring(5));
+		GameRegistry.registerBlock(template_start, template_start.getUnlocalizedName().substring(5));
+		GameRegistry.registerBlock(template_end, template_end.getUnlocalizedName().substring(5));
 	}
 	
 	public static void registerRenders()
@@ -64,6 +79,8 @@ public class RabbitBlocks {
 		registerRender(flesh_block);
 		registerRender(apatite_ore);
 		registerRender(human_sponge);
+		registerRender(template_start);
+		registerRender(template_end);
 	}
 	
 	public static void registerRender(Block b)
