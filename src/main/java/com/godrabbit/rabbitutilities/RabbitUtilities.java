@@ -103,13 +103,54 @@ public class RabbitUtilities {
 				"QBQ",
 				"AQA", 'A', RabbitItems.anapaite_dust, 'B', Items.book, 'Q', Items.quartz);
 		
+		GameRegistry.addShapedRecipe(new ItemStack(RabbitItems.eye_item, 1),
+				" F ",
+				"F F",
+				" F ", 'F', RabbitItems.flesh_item);
+		
+		//ore doubling recipes:
+		GameRegistry.addShapedRecipe(new ItemStack(Items.iron_ingot, 2), 
+				"FFF",
+				"FOF",
+				"FFF", 'F', RabbitItems.decomposing_flesh, 'O', Item.getItemFromBlock(Blocks.iron_ore));
+		
+		GameRegistry.addShapedRecipe(new ItemStack(Items.gold_ingot, 2), 
+				"FFF",
+				"FOF",
+				"FFF", 'F', RabbitItems.decomposing_flesh, 'O', Item.getItemFromBlock(Blocks.gold_ore));
+		
+		GameRegistry.addShapedRecipe(new ItemStack(Items.quartz, 5), 
+				"FFF",
+				"FOF",
+				"FFF", 'F', RabbitItems.decomposing_flesh, 'O', Item.getItemFromBlock(Blocks.quartz_ore));
+		
+		GameRegistry.addShapedRecipe(new ItemStack(Items.diamond, 4), 
+				"FFF",
+				"FOF",
+				"FFF", 'F', RabbitItems.decomposing_flesh, 'O', Item.getItemFromBlock(Blocks.diamond_ore));
+		
+		GameRegistry.addShapedRecipe(new ItemStack(Items.emerald, 3), 
+				"FFF",
+				"FOF",
+				"FFF", 'F', RabbitItems.decomposing_flesh, 'O', Item.getItemFromBlock(Blocks.emerald_ore));
+		
+		GameRegistry.addShapedRecipe(new ItemStack(Items.coal, 7), 
+				"FFF",
+				"FOF",
+				"FFF", 'F', RabbitItems.decomposing_flesh, 'O', Item.getItemFromBlock(Blocks.coal_ore));
+		
+		
+		//smelting recipes:
+		GameRegistry.addSmelting(RabbitItems.flesh_ingot, new ItemStack(RabbitItems.decomposing_flesh), 0.7F);
+		
 		//Enchanted books recipes
 		ItemStack power=new ItemStack(Items.enchanted_book, 1);
 		power.addEnchantment(Enchantment.power, 1);
 		GameRegistry.addShapelessRecipe(power, Items.book, RabbitItems.muscle_item);
-
 		
-		//special Recipes
+		//special recipes:
+		
+		//entities
 		int n=EntityRegistry.findGlobalUniqueEntityId();
 		EntityRegistry.registerGlobalEntityID(EntityLivingFlesh.class, "Living Flesh", n);
 		EntityRegistry.registerModEntity(EntityLivingFlesh.class, "Living Flesh", n, RabbitUtilities.instance, 32, 50, false);
