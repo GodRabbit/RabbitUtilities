@@ -22,7 +22,7 @@ public class DecomposingFleshItem extends Item{
 		{
 			if(!entity.isInvisible())
 			{
-				((EntityPlayer) entity).addPotionEffect(new PotionEffect(Potion.hunger.id, 100, 6, false, true));
+				((EntityPlayer) entity).addPotionEffect(new PotionEffect(Potion.hunger.id, 100, 9, false, true));
 				((EntityPlayer) entity).addPotionEffect(new PotionEffect(Potion.blindness.id, 100, 1, false, true));;
 			}
 		}

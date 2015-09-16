@@ -39,6 +39,7 @@ public class RabbitItems {
 	public static Item mirror_shard;
 	public static Item apatite_dust;
 	public static Item decomposing_flesh;
+	public static Item brain_item;
 	
 	public static void init()
 	{
@@ -125,6 +126,10 @@ public class RabbitItems {
 		.setUnlocalizedName("decomposing_flesh")
 		.setCreativeTab(RabbitUtilities.RabbitTab);
 		
+		brain_item = new BrainItem()
+		.setUnlocalizedName("brain_item")
+		.setCreativeTab(RabbitUtilities.RabbitTab);
+		
 	}
 	
 	public static void register()
@@ -149,6 +154,7 @@ public class RabbitItems {
 		GameRegistry.registerItem(mirror_shard, mirror_shard.getUnlocalizedName().substring(5));
 		GameRegistry.registerItem(apatite_dust, apatite_dust.getUnlocalizedName().substring(5));
 		GameRegistry.registerItem(decomposing_flesh, decomposing_flesh.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(brain_item, brain_item.getUnlocalizedName().substring(5));
 	}
 	
 	public static void registerRenders()
@@ -173,6 +179,7 @@ public class RabbitItems {
 		registerRender(mirror_shard);
 		registerRender(apatite_dust);
 		registerRender(decomposing_flesh);
+		registerRender(brain_item);
 	}
 	
 	public static void registerRender(Item item)

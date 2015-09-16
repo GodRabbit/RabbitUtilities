@@ -139,9 +139,23 @@ public class RabbitUtilities {
 				"FOF",
 				"FFF", 'F', RabbitItems.decomposing_flesh, 'O', Item.getItemFromBlock(Blocks.coal_ore));
 		
+		//more rexipes:
+		GameRegistry.addShapedRecipe(new ItemStack(RabbitItems.brain_item, 1), 
+				"FFF",
+				"FBF",
+				"FFF", 'F', RabbitItems.flesh_item, 'B', Item.getItemFromBlock(Blocks.diamond_block));
+		
+		GameRegistry.addShapedRecipe(new ItemStack(RabbitItems.human_seeds, 4), 
+				"EBE",
+				"MSM",
+				"MIM", 'E', RabbitItems.eye_item, 'B', RabbitItems.brain_item, 'M', RabbitItems.muscle_item,
+				'S', Items.skull, 'I', Items.bone);
+		
 		
 		//smelting recipes:
 		GameRegistry.addSmelting(RabbitItems.flesh_ingot, new ItemStack(RabbitItems.decomposing_flesh), 0.7F);
+		
+		
 		
 		//Enchanted books recipes
 		ItemStack power=new ItemStack(Items.enchanted_book, 1);
