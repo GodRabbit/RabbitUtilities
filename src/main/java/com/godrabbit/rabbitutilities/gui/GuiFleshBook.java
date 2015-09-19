@@ -48,16 +48,14 @@ public class GuiFleshBook extends GuiScreen{
         bookPageTextures[1] = new ResourceLocation(
         		RabbitConst.MODID+":textures/gui/book_guide_page.png"); //main menu
         bookPageTextures[2] = new ResourceLocation(
-        		RabbitConst.MODID+":textures/gui/book_guide_page.png");
+        		RabbitConst.MODID+":textures/gui/book_guide_intro1.png"); //introduction1
         bookPageTextures[3] = new ResourceLocation(
         		RabbitConst.MODID+":textures/gui/book_guide_page.png");
           
          //handle text:
         stringPageText[0] = "";
         stringPageText[1] = "";
-        stringPageText[2]="So you handed him your cow, and grabbed the Magic Beans.\n\nPleased with "
-        		+ "yourself, you hurried away, looking for tilled dirt in which to plant the Magic"
-        		+ " Beans.\n\nYou couldn't wait to see how proud your mother would be for";
+        stringPageText[2]="";
         stringPageText[3]="being so shrewd!  Untold wealth in return for an old, milkless cow;"
         		+ " what a good deal you made!\n\nSo off you went, looking for a place to plant"
         		+ " the Magic Beans with room to grow...";
@@ -69,8 +67,7 @@ public class GuiFleshBook extends GuiScreen{
     @Override
     public void initGui()
     {
-    	// DEBUG
-    	System.out.println("GuiFleshBook initGUI()");
+    	
     	buttonList.clear();
         Keyboard.enableRepeatEvents(true);
 
@@ -84,10 +81,18 @@ public class GuiFleshBook extends GuiScreen{
         buttonList.add(buttonPreviousPage = new NextPageButton(2, 
               offsetFromScreenLeft + 38, 156, false));
         
-        //register menu buttons:
-        introButton=new MenuButton(3, offsetFromScreenLeft+32, 32, 
-        		"intro_button1", "intro_button1");
+        //init main menu buttons:
+        introButton=new MenuButton(3, offsetFromScreenLeft+36, 28, 
+        		"intro_button1");
         buttonList.add(introButton);
+        
+        basicsButton= new MenuButton(4, offsetFromScreenLeft+89, 28, 
+        		"basics_button1");
+        buttonList.add(basicsButton);
+        
+        worldButton = new MenuButton(5, offsetFromScreenLeft+36, 45,
+        		"world_button1");
+        buttonList.add(worldButton);
     }
     
     /**
@@ -99,8 +104,12 @@ public class GuiFleshBook extends GuiScreen{
         buttonDone.visible = true;
         buttonNextPage.visible = (currPage < bookTotalPages - 1);
         buttonPreviousPage.visible = currPage > 0;
-        //handle menu buttons
+        
+        //handle main menu buttons
         introButton.visible = (currPage==1);
+        basicsButton.visible = (currPage==1);
+        worldButton.visible = (currPage==1);
+        
     }
     
     /**
@@ -110,18 +119,26 @@ public class GuiFleshBook extends GuiScreen{
     public void drawScreen(int parWidth, int parHeight, float p_73863_3_)
     {
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        if (currPage == 0)
+        switch(currPage)
         {
+        case 0:
         	mc.getTextureManager().bindTexture(bookPageTextures[0]);
-        }
-        else
-        {
+        	break;
+        case 1:
         	mc.getTextureManager().bindTexture(bookPageTextures[1]);
+        	break;
+        case 2:
+        	mc.getTextureManager().bindTexture(bookPageTextures[2]);
+        	break;
+        default:
+        	mc.getTextureManager().bindTexture(bookPageTextures[1]);
+        	break;
+        	
         }
         int offsetFromScreenLeft = (width - bookImageWidth ) / 2;
         drawTexturedModalRect(offsetFromScreenLeft, 2, 0, 0, bookImageWidth, 
               bookImageHeight);
-        int widthOfString;
+        /*int widthOfString;
         String stringPageIndicator = I18n.format("book.pageIndicator", 
               new Object[] {Integer.valueOf(currPage + 1), bookTotalPages});
         widthOfString = fontRendererObj.getStringWidth(stringPageIndicator);
@@ -129,7 +146,7 @@ public class GuiFleshBook extends GuiScreen{
               offsetFromScreenLeft - widthOfString + bookImageWidth - 44, 
               18, 0);
         fontRendererObj.drawSplitString(stringPageText[currPage], 
-              offsetFromScreenLeft + 36, 34, 116, 0);
+              offsetFromScreenLeft + 36, 34, 116, 0);*/
         super.drawScreen(parWidth, parHeight, p_73863_3_);
 
     }
@@ -236,15 +253,15 @@ public class GuiFleshBook extends GuiScreen{
     	 * This class creates a button with 2 textures, one for the button is untouched and another
     	 * for when you touch the button. 
     	 */
-    	ResourceLocation[] btexture = new ResourceLocation[2];
+    	ResourceLocation btexture;
     	
-		public MenuButton(int buttonId, int x, int y, String texture1, String texture2) 
+		public MenuButton(int buttonId, int x, int y, String texture) 
 		{
 			//height=32; width=48
 			super(buttonId, x, y, 48, 32, "");
 			
 			//button unpressed
-			btexture[0]= new ResourceLocation(RabbitConst.MODID+":textures/gui/"+texture1+".png");
+			btexture= new ResourceLocation(RabbitConst.MODID+":textures/gui/"+texture+".png");
 			//button pressed
 			//btexture[1] = new ResourceLocation(RabbitConst.MODID+":textures/gui/"+texture2+".png");
 			
@@ -261,12 +278,20 @@ public class GuiFleshBook extends GuiScreen{
 	                    && mouseY < yPosition + height);
 				 GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F); //have no idea what this for ???
 
-				 mc.getTextureManager().bindTexture(btexture[0]);
+				 mc.getTextureManager().bindTexture(btexture);
 				
-				
-				drawTexturedModalRect(xPosition, yPosition, 
-	                      0, 1, 
-	                      this.width, this.height);
+				if(!isButtonPressed)
+				{
+					drawTexturedModalRect(xPosition, yPosition, 
+							0, 1, 
+							this.width, this.height);
+				}
+				else
+				{
+					drawTexturedModalRect(xPosition, yPosition, 
+							50, 1, 
+							this.width, this.height);
+				}
 				 
 				
 			}
