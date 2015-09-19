@@ -14,6 +14,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.NetworkSystem;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -25,6 +27,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 @Mod(modid = RabbitConst.MODID, name= RabbitConst.MODNAME, version =  RabbitConst.VERSION)
 public class RabbitUtilities {
@@ -33,6 +36,13 @@ public class RabbitUtilities {
 	
 	@Instance(RabbitConst.MODID)
 	public static RabbitUtilities instance;
+	
+	//copied from CoolAlias tutorial on backpacks;
+	/** This is used to keep track of GUIs that we make*/
+	private static int modGuiIndex = 0;
+
+	/** Set our custom inventory Gui index to the next available Gui index */
+	public static final int GUI_ITEM_INV = modGuiIndex++;
 	
 	public RabbitUtilities()
 	{
@@ -173,8 +183,8 @@ public class RabbitUtilities {
 		EntityRegistry.registerGlobalEntityID(EntityMirror.class,"Mirror", m);
 		EntityRegistry.registerModEntity(EntityMirror.class, "Mirror", m, RabbitUtilities.instance, 32, 50, false);
 		
-		
-
+		// register CommonProxy as our GuiHandler
+		NetworkRegistry.INSTANCE.registerGuiHandler(this, new CommonProxy());
 	}
 	
 	@EventHandler
