@@ -26,23 +26,35 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class GuiFleshBook extends GuiScreen{
 	
 	private final int bookImageHeight = 192;
-    private final int bookImageWidth = 192;
+    private final int bookImageWidth = 256; //previously 192
     private int currPage = 0;
-    private static final int bookTotalPages = 4;
+    private static final int bookTotalPages = 6;
     private static ResourceLocation[] bookPageTextures = 
           new ResourceLocation[bookTotalPages];
     private static String[] stringPageText = new String[bookTotalPages];
     private GuiButton buttonDone;
     private NextPageButton buttonNextPage;
     private NextPageButton buttonPreviousPage;
+    
     //main menu buttons:
     private MenuButton introButton;
     private MenuButton basicsButton;
     private MenuButton worldButton;
+    private MenuButton utilityButton;
+    private MenuButton motionButton;
+    private MenuButton painButton;
+    private MenuButton smokeButton;
+    private MenuButton colorButton;
+    
+    //"Basics" menu:
+    private MenuButton fleshEaterButton;
+    private MenuButton fleshIngotButton;
+    private MenuButton muscleButton;
+    private MenuButton eyeButton;
     
     public GuiFleshBook()
     {
-    	//handle textures
+    	//init all textures textures
     	bookPageTextures[0] = new ResourceLocation(
                 RabbitConst.MODID+":textures/gui/book_guide_cover.png");
         bookPageTextures[1] = new ResourceLocation(
@@ -50,15 +62,17 @@ public class GuiFleshBook extends GuiScreen{
         bookPageTextures[2] = new ResourceLocation(
         		RabbitConst.MODID+":textures/gui/book_guide_intro1.png"); //introduction1
         bookPageTextures[3] = new ResourceLocation(
-        		RabbitConst.MODID+":textures/gui/book_guide_page.png");
+        		RabbitConst.MODID+":textures/gui/book_guide_basics1.png"); //Basics page
+        bookPageTextures[4] = new ResourceLocation(
+        		RabbitConst.MODID+":textures/gui/book_guide_utility1.png"); //Utility page
+        bookPageTextures[5] = new ResourceLocation(
+        		RabbitConst.MODID+":textures/gui/book_guide_motion1.png"); //Motion page
           
          //handle text:
         stringPageText[0] = "";
         stringPageText[1] = "";
         stringPageText[2]="";
-        stringPageText[3]="being so shrewd!  Untold wealth in return for an old, milkless cow;"
-        		+ " what a good deal you made!\n\nSo off you went, looking for a place to plant"
-        		+ " the Magic Beans with room to grow...";
+        stringPageText[3]="";
     }
     
     /**
@@ -77,22 +91,60 @@ public class GuiFleshBook extends GuiScreen{
         buttonList.add(buttonDone);
         int offsetFromScreenLeft = (width - bookImageWidth) / 2;
         buttonList.add(buttonNextPage = new NextPageButton(1, 
-              offsetFromScreenLeft + 120, 156, true));
+              offsetFromScreenLeft + 220, 156, true));
         buttonList.add(buttonPreviousPage = new NextPageButton(2, 
-              offsetFromScreenLeft + 38, 156, false));
+              offsetFromScreenLeft +10, 156, false));
         
         //init main menu buttons:
-        introButton=new MenuButton(3, offsetFromScreenLeft+36, 28, 
+        //page 1:
+        introButton=new MenuButton(3, offsetFromScreenLeft+16, 12, 
         		"intro_button1");
         buttonList.add(introButton);
         
-        basicsButton= new MenuButton(4, offsetFromScreenLeft+89, 28, 
+        basicsButton= new MenuButton(4, offsetFromScreenLeft+69, 12, 
         		"basics_button1");
         buttonList.add(basicsButton);
         
-        worldButton = new MenuButton(5, offsetFromScreenLeft+36, 45,
+        worldButton = new MenuButton(5, offsetFromScreenLeft+16, 43,
         		"world_button1");
         buttonList.add(worldButton);
+        
+        utilityButton = new MenuButton(6, offsetFromScreenLeft+69, 43,
+        		"utility_button1");
+        buttonList.add(utilityButton);
+        
+        motionButton = new MenuButton(7, offsetFromScreenLeft+16, 74,
+        		"motion_button1");
+        buttonList.add(motionButton);
+        
+        painButton = new MenuButton(8, offsetFromScreenLeft+69, 74,
+        		"pain_button1");
+        buttonList.add(painButton);
+        
+        smokeButton = new MenuButton(9, offsetFromScreenLeft+16, 105,
+        		"smoke_button1");
+        buttonList.add(smokeButton);
+        
+        colorButton = new MenuButton(10, offsetFromScreenLeft+69, 105,
+        		"color_button1");
+        buttonList.add(colorButton);
+        
+        //init "Basics" menu buttons:
+        fleshEaterButton = new MenuButton(11, offsetFromScreenLeft+16, 28,
+        		ButtonSize.subMenu, "flesh_eater_button1");
+        buttonList.add(fleshEaterButton);
+        
+        fleshIngotButton = new MenuButton(12, offsetFromScreenLeft+16, 48,
+        		ButtonSize.subMenu, "flesh_ingot_button1");
+        buttonList.add(fleshIngotButton);
+        
+        muscleButton = new MenuButton(13, offsetFromScreenLeft+16, 68,
+        		ButtonSize.subMenu, "muscle_button1");
+        buttonList.add(muscleButton);
+        
+        eyeButton = new MenuButton(14, offsetFromScreenLeft+16, 88,
+        		ButtonSize.subMenu, "eye_button1");
+        buttonList.add(eyeButton);
     }
     
     /**
@@ -109,7 +161,17 @@ public class GuiFleshBook extends GuiScreen{
         introButton.visible = (currPage==1);
         basicsButton.visible = (currPage==1);
         worldButton.visible = (currPage==1);
+        utilityButton.visible = (currPage==1);
+        motionButton.visible = (currPage==1);
+        painButton.visible = (currPage==1);
+        smokeButton.visible = (currPage==1);
+        colorButton.visible = (currPage==1);
         
+        //handle Basics menu buttons:
+        fleshEaterButton.visible = (currPage==3);
+        fleshIngotButton.visible = (currPage==3);
+        muscleButton.visible = (currPage==3);
+        eyeButton.visible =	(currPage==3);
     }
     
     /**
@@ -129,6 +191,9 @@ public class GuiFleshBook extends GuiScreen{
         	break;
         case 2:
         	mc.getTextureManager().bindTexture(bookPageTextures[2]);
+        	break;
+        case 3:
+        	mc.getTextureManager().bindTexture(bookPageTextures[3]);
         	break;
         default:
         	mc.getTextureManager().bindTexture(bookPageTextures[1]);
@@ -210,6 +275,7 @@ public class GuiFleshBook extends GuiScreen{
         {
             super(parButtonId, parPosX, parPosY, 23, 13, "");
             isNextButton = parIsNextButton;
+            this.visible=false;
         }
 
         /**
@@ -225,7 +291,8 @@ public class GuiFleshBook extends GuiScreen{
                       && parX < xPosition + width 
                       && parY < yPosition + height);
                 GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-                mc.getTextureManager().bindTexture(bookPageTextures[1]);
+                ResourceLocation bTexture=new ResourceLocation( RabbitConst.MODID+":textures/gui/next_buttons.png");
+                mc.getTextureManager().bindTexture(bTexture);
                 int textureX = 0;
                 int textureY = 192;
 
@@ -255,17 +322,27 @@ public class GuiFleshBook extends GuiScreen{
     	 */
     	ResourceLocation btexture;
     	
+    	
 		public MenuButton(int buttonId, int x, int y, String texture) 
 		{
 			//height=32; width=48
 			super(buttonId, x, y, 48, 32, "");
 			
-			//button unpressed
+			this.visible=false; //deafult
+		
 			btexture= new ResourceLocation(RabbitConst.MODID+":textures/gui/"+texture+".png");
-			//button pressed
-			//btexture[1] = new ResourceLocation(RabbitConst.MODID+":textures/gui/"+texture2+".png");
 			
 		}
+		
+		public MenuButton(int buttonId, int x, int y, ButtonSize size, String texture)
+		{
+			super(buttonId, x, y, size._width, size._height, "");
+			btexture= new ResourceLocation(RabbitConst.MODID+":textures/gui/"+texture+".png");
+			
+			this.visible=false; //deafult
+		}
+		
+		
 		
 		@Override
 		public void drawButton(Minecraft mc, int mouseX, int mouseY) {
@@ -289,7 +366,7 @@ public class GuiFleshBook extends GuiScreen{
 				else
 				{
 					drawTexturedModalRect(xPosition, yPosition, 
-							50, 1, 
+							this.width+2, 1, 
 							this.width, this.height);
 				}
 				 
@@ -298,5 +375,20 @@ public class GuiFleshBook extends GuiScreen{
 			
 		}
     	
+    }
+    
+    public enum ButtonSize
+    {
+    	mainMenu(48, 32),
+    	subMenu(104, 20);
+    	
+    	int _width;
+    	int _height;
+    	
+    	ButtonSize(int width, int height)
+    	{
+    		_width=width;
+    		_height=height;
+    	}
     }
 }
