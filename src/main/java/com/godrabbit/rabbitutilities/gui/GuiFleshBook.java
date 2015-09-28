@@ -28,7 +28,7 @@ public class GuiFleshBook extends GuiScreen{
 	private final int bookImageHeight = 192;
     private final int bookImageWidth = 256; //previously 192
     private int currPage = 0;
-    private static final int bookTotalPages = 6;
+    private static final int bookTotalPages = 10;
     private static ResourceLocation[] bookPageTextures = 
           new ResourceLocation[bookTotalPages];
     private static String[] stringPageText = new String[bookTotalPages];
@@ -51,6 +51,7 @@ public class GuiFleshBook extends GuiScreen{
     private MenuButton fleshIngotButton;
     private MenuButton muscleButton;
     private MenuButton eyeButton;
+    private MenuButton brainButton;
     
     public GuiFleshBook()
     {
@@ -145,6 +146,10 @@ public class GuiFleshBook extends GuiScreen{
         eyeButton = new MenuButton(14, offsetFromScreenLeft+16, 88,
         		ButtonSize.subMenu, "eye_button1");
         buttonList.add(eyeButton);
+        
+        brainButton = new MenuButton(15, offsetFromScreenLeft+16, 108,
+        		ButtonSize.subMenu, "brain_button1");
+        buttonList.add(brainButton);
     }
     
     /**
@@ -172,6 +177,7 @@ public class GuiFleshBook extends GuiScreen{
         fleshIngotButton.visible = (currPage==3);
         muscleButton.visible = (currPage==3);
         eyeButton.visible =	(currPage==3);
+        brainButton.visible = (currPage==3);
     }
     
     /**
@@ -180,6 +186,7 @@ public class GuiFleshBook extends GuiScreen{
     @Override
     public void drawScreen(int parWidth, int parHeight, float p_73863_3_)
     {
+    	Minecraft mc=Minecraft.getMinecraft();
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         switch(currPage)
         {
