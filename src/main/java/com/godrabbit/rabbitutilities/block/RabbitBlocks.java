@@ -18,6 +18,7 @@ public class RabbitBlocks {
 	public static Block apatite_ore;
 	public static Block human_sponge;
 	public static Block jump_scare;
+	public static Block ritual_table_basic;
 	
 	//template related blocks
 	public static Block template_start;
@@ -53,6 +54,10 @@ public class RabbitBlocks {
 		.setUnlocalizedName("jump_scare")
 		.setCreativeTab(RabbitUtilities.RabbitTab);
 		
+		ritual_table_basic = new RitualTableBlock()
+		.setUnlocalizedName("ritual_table_basic")
+		.setCreativeTab(RabbitUtilities.RabbitTab);
+		
 		//template blocks
 		template_start = new TemplateStartBlock()
 		.setUnlocalizedName("template_start")
@@ -75,6 +80,8 @@ public class RabbitBlocks {
 		GameRegistry.registerBlock(template_start, template_start.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(template_end, template_end.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(jump_scare, jump_scare.getUnlocalizedName().substring(5));
+		GameRegistry.registerBlock(ritual_table_basic, ritual_table_basic.getUnlocalizedName().substring(5));
+		
 	}
 	
 	public static void registerRenders()
@@ -88,6 +95,7 @@ public class RabbitBlocks {
 		registerRender(template_start);
 		registerRender(template_end);
 		registerRender(jump_scare);
+		registerRender(ritual_table_basic);
 	}
 	
 	public static void registerRender(Block b)

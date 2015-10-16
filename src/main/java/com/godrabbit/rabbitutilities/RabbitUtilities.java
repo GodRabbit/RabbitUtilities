@@ -76,7 +76,7 @@ public class RabbitUtilities {
 		GameRegistry.addShapedRecipe(new ItemStack(RabbitItems.flesh_eater_sword, 1),
 				" S ",
 				"  S",
-				" T ", 'S', Items.iron_ingot, 'T', Items.stick);
+				" T ", 'S', Items.arrow, 'T', Items.stick);
 		
 		GameRegistry.addShapedRecipe(new ItemStack(RabbitItems.flesh_ingot), 
 				"FFF",
