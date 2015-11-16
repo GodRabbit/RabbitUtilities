@@ -7,6 +7,7 @@ import com.godrabbit.rabbitutilities.tool.FleshBoneAxe;
 import com.godrabbit.rabbitutilities.tool.FleshBucket;
 import com.godrabbit.rabbitutilities.tool.FleshEaterSword;
 import com.godrabbit.rabbitutilities.tool.FleshPickaxe;
+import com.godrabbit.rabbitutilities.tool.FleshWings;
 import com.godrabbit.rabbitutilities.tool.IDSword;
 import com.godrabbit.rabbitutilities.tool.SpeculumonomiconItem;
 import com.godrabbit.rabbitutilities.tool.TeleporterItem;
@@ -45,6 +46,7 @@ public class RabbitItems {
 	public static Item id_sword; //interdimensional sword
 	public static Item feet_item;
 	public static Item lungs_item;
+	public static Item flesh_wings;
 	
 	
 	public static void init()
@@ -81,6 +83,11 @@ public class RabbitItems {
 		id_sword = new IDSword()
 		.setUnlocalizedName("id_sword")
 		.setCreativeTab(RabbitUtilities.RabbitTab);
+		
+		flesh_wings=new FleshWings()
+		.setUnlocalizedName("flesh_wings")
+		.setCreativeTab(RabbitUtilities.RabbitTab);
+		
 		
 		
 		//items:
@@ -181,6 +188,7 @@ public class RabbitItems {
 		GameRegistry.registerItem(id_sword, id_sword.getUnlocalizedName().substring(5));
 		GameRegistry.registerItem(feet_item, feet_item.getUnlocalizedName().substring(5));
 		GameRegistry.registerItem(lungs_item, lungs_item.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(flesh_wings, flesh_wings.getUnlocalizedName().substring(5));
 	}
 	
 	public static void registerRenders()
@@ -210,6 +218,7 @@ public class RabbitItems {
 		registerRender(id_sword);
 		registerRender(feet_item);
 		registerRender(lungs_item);
+		registerRender(flesh_wings);
 	}
 	
 	public static void registerRender(Item item)
