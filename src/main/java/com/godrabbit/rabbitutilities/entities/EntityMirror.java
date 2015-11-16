@@ -9,14 +9,18 @@ import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
 public class EntityMirror extends EntityMob implements IMob{
 
+	int CD=0; //cool down for spawning doppleganger
+	final static int MaxCD=500;
 	public EntityMirror(World worldIn) {
 		super(worldIn);
 		this.tasks.addTask(0, new EntityAISwimming(this));
@@ -32,7 +36,7 @@ public class EntityMirror extends EntityMob implements IMob{
 		super.applyEntityAttributes();
 		
 		// standard attributes registered to EntityLivingBase
-		 getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(50.0D);
+		 getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(10.0D);
 		 getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.35D);
 		 getEntityAttribute(SharedMonsterAttributes.knockbackResistance).setBaseValue(0.8D);
 		 getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(30.0D);
@@ -57,7 +61,7 @@ public class EntityMirror extends EntityMob implements IMob{
 	@Override
 	protected void dropFewItems(boolean p_70628_1_, int p_70628_2_) {
 		
-		int j = this.rand.nextInt(2 + p_70628_2_);
+		int j = 1+this.rand.nextInt(2 + p_70628_2_);
         int k;
 
         for (k = 0; k < j; ++k)
@@ -67,4 +71,25 @@ public class EntityMirror extends EntityMob implements IMob{
 		super.dropFewItems(p_70628_1_, p_70628_2_);
 	}
 	
+	/*@Override
+	public void onLivingUpdate() {
+		if(CD>0)
+			CD--;
+		
+		super.onLivingUpdate();
+	}*/
+	
+	@Override
+	public void onCollideWithPlayer(EntityPlayer entity) {
+		World world=entity.getEntityWorld();
+		BlockPos pos=entity.getPosition();
+		/*if(!world.isRemote && CD==0)
+		{
+			EntityZombie bob=new EntityZombie(world);
+			bob.setPosition(pos.getX()+0.5D, pos.getY()+1, pos.getZ()+0.5D);
+			world.spawnEntityInWorld(bob);
+			CD=MaxCD;
+		}*/
+		super.onCollideWithPlayer(entity);
+	}
 }

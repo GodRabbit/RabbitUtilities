@@ -1,9 +1,9 @@
 {
     "parent": "builtin/generated",
     "textures": {
-        "layer0": "rabbitutilities:items/mirror_shard"
+        "layer0": "rabbitutilities:items/hunger_badge"
     },
-    "display": {
+      "display": {
         "thirdperson": {
             "rotation": [ -90, 0, 0 ],
             "translation": [ 0, 1, -3 ],

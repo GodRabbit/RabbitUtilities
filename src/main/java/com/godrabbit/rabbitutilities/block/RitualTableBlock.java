@@ -10,6 +10,7 @@ public class RitualTableBlock extends Block{
 		this.setHardness(12.0f);
 		this.setResistance(1.0f);
 		this.setLightLevel(15.0f);
+		this.setBlockBounds(0.0f, 0.0f, 0.0f, 1.0f,0.5f , 1.0f);
 		
 	}
 	
@@ -27,7 +28,7 @@ public class RitualTableBlock extends Block{
 	
 	@Override
 	public boolean isOpaqueCube() {
-		// TODO Auto-generated method stub
+		
 		return false;
 	}
 	

@@ -2,6 +2,7 @@ package com.godrabbit.rabbitutilities.tool;
 
 import java.util.Random;
 
+import com.godrabbit.rabbitutilities.block.RabbitBlocks;
 import com.godrabbit.rabbitutilities.entities.EntityMirror;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -26,9 +27,9 @@ public class SpeculumonomiconItem extends Item{
 			World world, BlockPos pos, EnumFacing side, float hitX,
 			float hitY, float hitZ) {
 		//is glass activated
-		if(world.getBlockState(pos).getBlock() == Blocks.glass)
+		if(world.getBlockState(pos).getBlock() == RabbitBlocks.ritual_table_basic)
 		{
-			//is block above glass is empty
+			//is block above altar is empty
 			if(world.canSeeSky(pos))
 			{
 				//spawn mirror

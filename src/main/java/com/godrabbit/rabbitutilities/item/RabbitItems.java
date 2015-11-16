@@ -7,6 +7,7 @@ import com.godrabbit.rabbitutilities.tool.FleshBoneAxe;
 import com.godrabbit.rabbitutilities.tool.FleshBucket;
 import com.godrabbit.rabbitutilities.tool.FleshEaterSword;
 import com.godrabbit.rabbitutilities.tool.FleshPickaxe;
+import com.godrabbit.rabbitutilities.tool.IDSword;
 import com.godrabbit.rabbitutilities.tool.SpeculumonomiconItem;
 import com.godrabbit.rabbitutilities.tool.TeleporterItem;
 
@@ -40,6 +41,11 @@ public class RabbitItems {
 	public static Item apatite_dust;
 	public static Item decomposing_flesh;
 	public static Item brain_item;
+	public static Item hunger_badge;
+	public static Item id_sword; //interdimensional sword
+	public static Item feet_item;
+	public static Item lungs_item;
+	
 	
 	public static void init()
 	{
@@ -70,6 +76,10 @@ public class RabbitItems {
 		
 		speculumonomicon = new SpeculumonomiconItem()
 		.setUnlocalizedName("speculumonomicon")
+		.setCreativeTab(RabbitUtilities.RabbitTab);
+		
+		id_sword = new IDSword()
+		.setUnlocalizedName("id_sword")
 		.setCreativeTab(RabbitUtilities.RabbitTab);
 		
 		
@@ -130,6 +140,18 @@ public class RabbitItems {
 		.setUnlocalizedName("brain_item")
 		.setCreativeTab(RabbitUtilities.RabbitTab);
 		
+		hunger_badge=new HungerBadgeItem()
+		.setUnlocalizedName("hunger_badge")
+		.setCreativeTab(RabbitUtilities.RabbitTab);
+		
+		feet_item=new FeetItem()
+		.setUnlocalizedName("feet_item")
+		.setCreativeTab(RabbitUtilities.RabbitTab);
+		
+		lungs_item=new LungsItem()
+		.setUnlocalizedName("lungs_item")
+		.setCreativeTab(RabbitUtilities.RabbitTab);
+		
 	}
 	
 	public static void register()
@@ -155,6 +177,10 @@ public class RabbitItems {
 		GameRegistry.registerItem(apatite_dust, apatite_dust.getUnlocalizedName().substring(5));
 		GameRegistry.registerItem(decomposing_flesh, decomposing_flesh.getUnlocalizedName().substring(5));
 		GameRegistry.registerItem(brain_item, brain_item.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(hunger_badge, hunger_badge.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(id_sword, id_sword.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(feet_item, feet_item.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(lungs_item, lungs_item.getUnlocalizedName().substring(5));
 	}
 	
 	public static void registerRenders()
@@ -180,6 +206,10 @@ public class RabbitItems {
 		registerRender(apatite_dust);
 		registerRender(decomposing_flesh);
 		registerRender(brain_item);
+		registerRender(hunger_badge);
+		registerRender(id_sword);
+		registerRender(feet_item);
+		registerRender(lungs_item);
 	}
 	
 	public static void registerRender(Item item)

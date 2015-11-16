@@ -7,17 +7,17 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
-public class EyeItem extends ItemFood{
+public class LungsItem extends ItemFood{
 
-	public EyeItem() {
-		super(8, 3.4f, false);
-		this.setMaxStackSize(2);
+	public LungsItem() {
+		super(8, 14.5f, true);
+		this.setMaxStackSize(1);
 	}
 	
 	@Override
 	protected void onFoodEaten(ItemStack stack, World worldIn,
 			EntityPlayer player) {
-		player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 1000, 0, false, false));
+		player.addPotionEffect(new PotionEffect(Potion.waterBreathing.id, 3000, 0, false, false));
 		super.onFoodEaten(stack, worldIn, player);
 	}
 

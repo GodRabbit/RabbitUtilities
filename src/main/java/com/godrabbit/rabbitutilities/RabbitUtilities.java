@@ -71,22 +71,22 @@ public class RabbitUtilities {
 		proxy.registerRenders();
 		
 		// recipes
-		GameRegistry.addShapelessRecipe(new ItemStack(RabbitItems.wooden_splinter, 4), Items.stick, Items.stick);
+		GameRegistry.addShapelessRecipe(new ItemStack(RabbitItems.wooden_splinter, 2), Items.stick);
 		
 		GameRegistry.addShapedRecipe(new ItemStack(RabbitItems.flesh_eater_sword, 1),
 				" S ",
 				"  S",
-				" T ", 'S', Items.arrow, 'T', Items.stick);
+				" T ", 'S', Items.arrow, 'T', RabbitItems.wooden_splinter);
 		
 		GameRegistry.addShapedRecipe(new ItemStack(RabbitItems.flesh_ingot), 
-				"FFF",
+				" F ",
 				"FSF",
-				"FFF", 'F', RabbitItems.flesh_item, 'S', Item.getItemFromBlock(Blocks.stone));
+				" F ", 'F', RabbitItems.flesh_item, 'S', Item.getItemFromBlock(Blocks.stone));
 		
 		GameRegistry.addShapedRecipe(new ItemStack(RabbitItems.flesh_pickaxe, 1), 
 				"FFF",
 				" S ",
-				" S ", 'F', RabbitItems.flesh_ingot, 'S', Items.stick);
+				" S ", 'F', RabbitItems.flesh_ingot, 'S', RabbitItems.wooden_splinter);
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(Item.getItemFromBlock(RabbitBlocks.flesh_block), 1), RabbitItems.flesh_ingot,
 				RabbitItems.flesh_ingot, RabbitItems.flesh_ingot, RabbitItems.flesh_ingot, 
@@ -149,7 +149,7 @@ public class RabbitUtilities {
 				"FOF",
 				"FFF", 'F', RabbitItems.decomposing_flesh, 'O', Item.getItemFromBlock(Blocks.coal_ore));
 		
-		//more rexipes:
+		//more recipes:
 		GameRegistry.addShapedRecipe(new ItemStack(RabbitItems.brain_item, 1), 
 				"FFF",
 				"FBF",
@@ -161,6 +161,32 @@ public class RabbitUtilities {
 				"MIM", 'E', RabbitItems.eye_item, 'B', RabbitItems.brain_item, 'M', RabbitItems.muscle_item,
 				'S', Items.skull, 'I', Items.bone);
 		
+		GameRegistry.addShapedRecipe(new ItemStack(RabbitItems.teleporter), 
+				"MDM",
+				"AEA",
+				"MDM", 'M', RabbitItems.mirror_shard, 'D', Items.diamond, 'A', RabbitItems.anapaite_dust,
+				'E', RabbitItems.eye_item);
+		
+		GameRegistry.addShapedRecipe(new ItemStack(RabbitItems.id_sword, 32), 
+				" M ",
+				" M ",
+				"PSP",'M', RabbitItems.mirror_shard, 'P', Items.ender_pearl, 'S', RabbitItems.wooden_splinter );
+		
+		GameRegistry.addShapedRecipe(new ItemStack(RabbitItems.flesh_bucket), 
+				"   ",
+				"F F",
+				" F ", 'F', RabbitItems.flesh_ingot);
+		
+		GameRegistry.addShapedRecipe(new ItemStack(RabbitItems.feet_item), 
+				"   ",
+				"   ",
+				"FFF", 'F', RabbitItems.flesh_item);
+		
+		GameRegistry.addShapedRecipe(new ItemStack(RabbitItems.lungs_item), 
+				"F F",
+				"F F",
+				"F F", 'F', RabbitItems.flesh_item);
+		
 		
 		//smelting recipes:
 		GameRegistry.addSmelting(RabbitItems.flesh_ingot, new ItemStack(RabbitItems.decomposing_flesh), 0.7F);
@@ -171,6 +197,28 @@ public class RabbitUtilities {
 		ItemStack power=new ItemStack(Items.enchanted_book, 1);
 		power.addEnchantment(Enchantment.power, 1);
 		GameRegistry.addShapelessRecipe(power, Items.book, RabbitItems.muscle_item);
+		
+		ItemStack resp=new ItemStack(Items.enchanted_book, 1);
+		resp.addEnchantment(Enchantment.respiration, 1);
+		GameRegistry.addShapelessRecipe(resp, Items.book, RabbitItems.lungs_item);
+		
+		ItemStack infinity=new ItemStack(Items.enchanted_book, 1);
+		infinity.addEnchantment(Enchantment.infinity, 1);
+		GameRegistry.addShapelessRecipe(infinity, Items.book, RabbitItems.brain_item);
+		
+		ItemStack feather=new ItemStack(Items.enchanted_book, 1);
+		feather.addEnchantment(Enchantment.featherFalling, 1);
+		GameRegistry.addShapedRecipe(feather, 
+				"   ",
+				"FBL",
+				"   ", 'F', Items.feather, 'B', Items.book, 'L', RabbitItems.feet_item);
+		
+		ItemStack strider=new ItemStack(Items.enchanted_book, 1);
+		strider.addEnchantment(Enchantment.depthStrider, 1);
+		GameRegistry.addShapedRecipe(strider, 
+				"   ",
+				"WBL",
+				"   ", 'W', Items.water_bucket, 'B', Items.book, 'L', RabbitItems.feet_item);
 		
 		//special recipes:
 		
