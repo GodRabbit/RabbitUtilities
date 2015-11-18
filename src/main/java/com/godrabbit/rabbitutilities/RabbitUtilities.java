@@ -120,40 +120,40 @@ public class RabbitUtilities {
 		
 		//ore doubling recipes:
 		GameRegistry.addShapedRecipe(new ItemStack(Items.iron_ingot, 2), 
-				"FFF",
+				" F ",
 				"FOF",
-				"FFF", 'F', RabbitItems.decomposing_flesh, 'O', Item.getItemFromBlock(Blocks.iron_ore));
+				" F ", 'F', RabbitItems.decomposing_flesh, 'O', Item.getItemFromBlock(Blocks.iron_ore));
 		
 		GameRegistry.addShapedRecipe(new ItemStack(Items.gold_ingot, 2), 
-				"FFF",
+				" F ",
 				"FOF",
-				"FFF", 'F', RabbitItems.decomposing_flesh, 'O', Item.getItemFromBlock(Blocks.gold_ore));
+				" F ", 'F', RabbitItems.decomposing_flesh, 'O', Item.getItemFromBlock(Blocks.gold_ore));
 		
 		GameRegistry.addShapedRecipe(new ItemStack(Items.quartz, 5), 
-				"FFF",
+				" F ",
 				"FOF",
-				"FFF", 'F', RabbitItems.decomposing_flesh, 'O', Item.getItemFromBlock(Blocks.quartz_ore));
+				" F ", 'F', RabbitItems.decomposing_flesh, 'O', Item.getItemFromBlock(Blocks.quartz_ore));
 		
 		GameRegistry.addShapedRecipe(new ItemStack(Items.diamond, 4), 
-				"FFF",
+				" F ",
 				"FOF",
-				"FFF", 'F', RabbitItems.decomposing_flesh, 'O', Item.getItemFromBlock(Blocks.diamond_ore));
+				" F ", 'F', RabbitItems.decomposing_flesh, 'O', Item.getItemFromBlock(Blocks.diamond_ore));
 		
 		GameRegistry.addShapedRecipe(new ItemStack(Items.emerald, 3), 
-				"FFF",
+				" F ",
 				"FOF",
-				"FFF", 'F', RabbitItems.decomposing_flesh, 'O', Item.getItemFromBlock(Blocks.emerald_ore));
+				" F ", 'F', RabbitItems.decomposing_flesh, 'O', Item.getItemFromBlock(Blocks.emerald_ore));
 		
 		GameRegistry.addShapedRecipe(new ItemStack(Items.coal, 7), 
-				"FFF",
+				" F ",
 				"FOF",
-				"FFF", 'F', RabbitItems.decomposing_flesh, 'O', Item.getItemFromBlock(Blocks.coal_ore));
+				" F ", 'F', RabbitItems.decomposing_flesh, 'O', Item.getItemFromBlock(Blocks.coal_ore));
 		
 		//more recipes:
 		GameRegistry.addShapedRecipe(new ItemStack(RabbitItems.brain_item, 1), 
 				"FFF",
 				"FBF",
-				"FFF", 'F', RabbitItems.flesh_item, 'B', Item.getItemFromBlock(Blocks.diamond_block));
+				"FFF", 'F', RabbitItems.flesh_item, 'B', Items.diamond);
 		
 		GameRegistry.addShapedRecipe(new ItemStack(RabbitItems.human_seeds, 4), 
 				"EBE",
@@ -177,6 +177,11 @@ public class RabbitUtilities {
 				"F F",
 				" F ", 'F', RabbitItems.flesh_ingot);
 		
+		GameRegistry.addShapedRecipe(new ItemStack(RabbitItems.flesh_bucket), 
+				"F F",
+				" F ",
+				"   ", 'F', RabbitItems.flesh_ingot);
+		
 		GameRegistry.addShapedRecipe(new ItemStack(RabbitItems.feet_item), 
 				"   ",
 				"   ",
@@ -188,10 +193,25 @@ public class RabbitUtilities {
 				"F F", 'F', RabbitItems.flesh_item);
 		
 		
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.slime_ball), 
+				Items.egg, RabbitItems.decomposing_flesh);
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.dye, 4, 15), 
+				Items.bone, RabbitItems.decomposing_flesh);
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.blaze_powder, 4), 
+				Items.blaze_rod, RabbitItems.decomposing_flesh);
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(RabbitItems.flour_item), 
+				Items.wheat, RabbitItems.decomposing_flesh);
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(Item.getItemFromBlock(Blocks.sand), 4), 
+				Item.getItemFromBlock(Blocks.cobblestone), RabbitItems.decomposing_flesh);
+		
 		//smelting recipes:
-		GameRegistry.addSmelting(RabbitItems.flesh_ingot, new ItemStack(RabbitItems.decomposing_flesh), 0.7F);
+		GameRegistry.addSmelting(RabbitItems.flesh_ingot, new ItemStack(RabbitItems.decomposing_flesh), 1.7F);
 		
-		
+		GameRegistry.addSmelting(RabbitItems.flour_item, new ItemStack(Items.bread), 1.7F);
 		
 		//Enchanted books recipes
 		ItemStack power=new ItemStack(Items.enchanted_book, 1);

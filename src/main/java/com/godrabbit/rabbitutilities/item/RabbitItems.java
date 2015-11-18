@@ -47,6 +47,8 @@ public class RabbitItems {
 	public static Item feet_item;
 	public static Item lungs_item;
 	public static Item flesh_wings;
+	public static Item compost_item;
+	public static Item flour_item;
 	
 	
 	public static void init()
@@ -159,6 +161,14 @@ public class RabbitItems {
 		.setUnlocalizedName("lungs_item")
 		.setCreativeTab(RabbitUtilities.RabbitTab);
 		
+		compost_item=new CompostItem()
+		.setUnlocalizedName("compost_item")
+		.setCreativeTab(RabbitUtilities.RabbitTab);
+		
+		flour_item=new FlourItem()
+		.setUnlocalizedName("flour_item")
+		.setCreativeTab(RabbitUtilities.RabbitTab);
+		
 	}
 	
 	public static void register()
@@ -189,6 +199,8 @@ public class RabbitItems {
 		GameRegistry.registerItem(feet_item, feet_item.getUnlocalizedName().substring(5));
 		GameRegistry.registerItem(lungs_item, lungs_item.getUnlocalizedName().substring(5));
 		GameRegistry.registerItem(flesh_wings, flesh_wings.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(compost_item, compost_item.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(flour_item, flour_item.getUnlocalizedName().substring(5));
 	}
 	
 	public static void registerRenders()
@@ -219,6 +231,8 @@ public class RabbitItems {
 		registerRender(feet_item);
 		registerRender(lungs_item);
 		registerRender(flesh_wings);
+		registerRender(compost_item);
+		registerRender(flour_item);
 	}
 	
 	public static void registerRender(Item item)

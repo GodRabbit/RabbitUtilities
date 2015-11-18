@@ -26,7 +26,7 @@ public class SpeculumonomiconItem extends Item{
 	public boolean onItemUse(ItemStack stack, EntityPlayer player,
 			World world, BlockPos pos, EnumFacing side, float hitX,
 			float hitY, float hitZ) {
-		//is glass activated
+		//is altar activated
 		if(world.getBlockState(pos).getBlock() == RabbitBlocks.ritual_table_basic)
 		{
 			//is block above altar is empty
