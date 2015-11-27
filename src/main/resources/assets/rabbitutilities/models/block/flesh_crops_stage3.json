@@ -1,0 +1,6 @@
+{
+    "parent": "block/crop",
+    "textures": {
+        "crop": "rabbitutilities:blocks/flesh_crops_stage3"
+    }
+}

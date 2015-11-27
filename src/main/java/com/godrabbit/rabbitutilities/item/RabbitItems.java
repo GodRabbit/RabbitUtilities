@@ -7,6 +7,7 @@ import com.godrabbit.rabbitutilities.tool.FleshBoneAxe;
 import com.godrabbit.rabbitutilities.tool.FleshBucket;
 import com.godrabbit.rabbitutilities.tool.FleshEaterSword;
 import com.godrabbit.rabbitutilities.tool.FleshPickaxe;
+import com.godrabbit.rabbitutilities.tool.FleshScythe;
 import com.godrabbit.rabbitutilities.tool.FleshWings;
 import com.godrabbit.rabbitutilities.tool.IDSword;
 import com.godrabbit.rabbitutilities.tool.SpeculumonomiconItem;
@@ -49,6 +50,9 @@ public class RabbitItems {
 	public static Item flesh_wings;
 	public static Item compost_item;
 	public static Item flour_item;
+	public static Item flesh_scythe;
+	public static Item nether_flour;
+	public static Item nether_bread;
 	
 	
 	public static void init()
@@ -90,7 +94,9 @@ public class RabbitItems {
 		.setUnlocalizedName("flesh_wings")
 		.setCreativeTab(RabbitUtilities.RabbitTab);
 		
-		
+		flesh_scythe = new FleshScythe()
+		.setUnlocalizedName("flesh_scythe")
+		.setCreativeTab(RabbitUtilities.RabbitTab);
 		
 		//items:
 		flesh_item=new FleshItem()
@@ -169,6 +175,14 @@ public class RabbitItems {
 		.setUnlocalizedName("flour_item")
 		.setCreativeTab(RabbitUtilities.RabbitTab);
 		
+		nether_flour=new NetherFlourItem()
+		.setUnlocalizedName("nether_flour")
+		.setCreativeTab(RabbitUtilities.RabbitTab);
+		
+		nether_bread=new NetherBread()
+		.setUnlocalizedName("nether_bread")
+		.setCreativeTab(RabbitUtilities.RabbitTab);
+		
 	}
 	
 	public static void register()
@@ -201,6 +215,9 @@ public class RabbitItems {
 		GameRegistry.registerItem(flesh_wings, flesh_wings.getUnlocalizedName().substring(5));
 		GameRegistry.registerItem(compost_item, compost_item.getUnlocalizedName().substring(5));
 		GameRegistry.registerItem(flour_item, flour_item.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(flesh_scythe, flesh_scythe.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(nether_flour, nether_flour.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(nether_bread, nether_bread.getUnlocalizedName().substring(5));
 	}
 	
 	public static void registerRenders()
@@ -233,6 +250,9 @@ public class RabbitItems {
 		registerRender(flesh_wings);
 		registerRender(compost_item);
 		registerRender(flour_item);
+		registerRender(flesh_scythe);
+		registerRender(nether_flour);
+		registerRender(nether_bread);
 	}
 	
 	public static void registerRender(Item item)

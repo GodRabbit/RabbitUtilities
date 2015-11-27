@@ -16,13 +16,13 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 
 public class TeleporterItem extends Item{
-	
+
 	public TeleporterItem()
 	{
 		this.setMaxStackSize(1);
 		this.setMaxDamage(1500);
 	}
-	
+
 	@Override
 	public void onCreated(ItemStack stack, World world, EntityPlayer player) {
 		if(stack.getTagCompound() == null)
@@ -37,7 +37,7 @@ public class TeleporterItem extends Item{
 			stack.getTagCompound().setInteger("dimid",player.dimension);
 		super.onCreated(stack, world, player);
 	}
-	
+
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player,
 			List tooltip, boolean advanced) {
@@ -57,7 +57,7 @@ public class TeleporterItem extends Item{
 		int dim = stack.getTagCompound().getInteger("dimid");
 		String d = dim==0? "Overworld" : (dim == -1? "Nether" :"Unknown???");
 		tooltip.add("TP Coor: "+d+" ("+x+","+y+","+z+")");
-		
+
 		if(!advanced)
 		{
 			int maxdmg=stack.getMaxDamage();
@@ -65,7 +65,7 @@ public class TeleporterItem extends Item{
 		}
 		super.addInformation(stack, player, tooltip, advanced);
 	}
-	
+
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world,
 			EntityPlayer player) {
@@ -79,7 +79,7 @@ public class TeleporterItem extends Item{
 			stack.getTagCompound().setInteger("tpZ", player.getPosition().getZ());
 		if(!stack.getTagCompound().hasKey("dimid"))
 			stack.getTagCompound().setInteger("dimid",player.dimension);
-		
+
 		if(!player.isSneaking())
 		{
 			//tp player cross dimension
@@ -87,7 +87,7 @@ public class TeleporterItem extends Item{
 			int y=stack.getTagCompound().getInteger("tpY");
 			int z=stack.getTagCompound().getInteger("tpZ");
 			int dim = stack.getTagCompound().getInteger("dimid");
-			
+
 			if(dim != player.dimension) //if cross dimension tp is necessary
 			{
 				if(player instanceof EntityPlayerMP)
@@ -98,40 +98,40 @@ public class TeleporterItem extends Item{
 					playerMP.mcServer.getConfigurationManager()
 					.transferPlayerToDimension(playerMP, dim,
 							new RabbitTeleporter(worldserver, x, y, z));
-					
+
 					//dmg item
 					int maxdmg=stack.getMaxDamage();
 					stack.damageItem(maxdmg/2+1, player);
-				
-				
+
+
 					//particles mngmnt
 					Random rand = new Random(world.getTotalWorldTime());
 					if (world.isRemote)
 					{
 						for (int i = 0; i < 10; ++i)
 						{
-		                world.spawnParticle(EnumParticleTypes.PORTAL, x+ (rand.nextDouble() - 0.5D) * (double)2.5, y + rand.nextDouble() * (double)2.5 - 0.25D, z + (rand.nextDouble() - 0.5D) * (double)2.5, (rand.nextDouble() - 0.5D) * 2.0D, -rand.nextDouble(), (rand.nextDouble() - 0.5D) * 2.0D, new int[0]);
+							world.spawnParticle(EnumParticleTypes.PORTAL, x+ (rand.nextDouble() - 0.5D) * (double)2.5, y + rand.nextDouble() * (double)2.5 - 0.25D, z + (rand.nextDouble() - 0.5D) * (double)2.5, (rand.nextDouble() - 0.5D) * 2.0D, -rand.nextDouble(), (rand.nextDouble() - 0.5D) * 2.0D, new int[0]);
 						}
 					}
-					
+
 				}
-					
+
 			}
 			else{
 				player.setPosition(x, y, z);
-			
+
 				//dmg item
 				int maxdmg=stack.getMaxDamage();
 				stack.damageItem(maxdmg/2+1, player);
-			
-			
+
+
 				//particles mngmnt
 				Random rand = new Random(world.getTotalWorldTime());
 				if (world.isRemote)
 				{
 					for (int i = 0; i < 10; ++i)
 					{
-	                world.spawnParticle(EnumParticleTypes.PORTAL, x+ (rand.nextDouble() - 0.5D) * (double)2.5, y + rand.nextDouble() * (double)2.5 - 0.25D, z + (rand.nextDouble() - 0.5D) * (double)2.5, (rand.nextDouble() - 0.5D) * 2.0D, -rand.nextDouble(), (rand.nextDouble() - 0.5D) * 2.0D, new int[0]);
+						world.spawnParticle(EnumParticleTypes.PORTAL, x+ (rand.nextDouble() - 0.5D) * (double)2.5, y + rand.nextDouble() * (double)2.5 - 0.25D, z + (rand.nextDouble() - 0.5D) * (double)2.5, (rand.nextDouble() - 0.5D) * 2.0D, -rand.nextDouble(), (rand.nextDouble() - 0.5D) * 2.0D, new int[0]);
 					}
 				}
 			}
@@ -144,7 +144,7 @@ public class TeleporterItem extends Item{
 		}
 		return super.onItemRightClick(stack, world, player);
 	}
-	
+
 	@Override
 	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn,
 			int itemSlot, boolean isSelected) {

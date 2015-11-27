@@ -208,10 +208,15 @@ public class RabbitUtilities {
 		GameRegistry.addShapelessRecipe(new ItemStack(Item.getItemFromBlock(Blocks.sand), 4), 
 				Item.getItemFromBlock(Blocks.cobblestone), RabbitItems.decomposing_flesh);
 		
+		GameRegistry.addShapelessRecipe(new ItemStack(RabbitItems.nether_flour), Items.nether_wart,
+				Items.blaze_powder, RabbitItems.decomposing_flesh);
+		
 		//smelting recipes:
 		GameRegistry.addSmelting(RabbitItems.flesh_ingot, new ItemStack(RabbitItems.decomposing_flesh), 1.7F);
 		
 		GameRegistry.addSmelting(RabbitItems.flour_item, new ItemStack(Items.bread), 1.7F);
+		
+		GameRegistry.addSmelting(RabbitItems.nether_flour, new ItemStack(RabbitItems.nether_bread), 5.4F);
 		
 		//Enchanted books recipes
 		ItemStack power=new ItemStack(Items.enchanted_book, 1);
