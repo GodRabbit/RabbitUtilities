@@ -19,7 +19,11 @@ public class RabbitBlocks {
 	public static Block human_sponge;
 	public static Block jump_scare;
 	public static Block ritual_table_basic;
+	public static Block elevator_block;
+	
+	//crops
 	public static Block flesh_crops;
+	public static Block quartz_crops;
 	
 	//template related blocks
 	public static Block template_start;
@@ -59,8 +63,17 @@ public class RabbitBlocks {
 		.setUnlocalizedName("ritual_table_basic")
 		.setCreativeTab(RabbitUtilities.RabbitTab);
 		
+		elevator_block = new ElevatorBlock()
+		.setUnlocalizedName("elevator_block")
+		.setCreativeTab(RabbitUtilities.RabbitTab);
+		
+		//crops
 		flesh_crops = new FleshCrops()
 		.setUnlocalizedName("flesh_crops")
+		.setCreativeTab(RabbitUtilities.RabbitTab);
+		
+		quartz_crops = new QuartzCrops()
+		.setUnlocalizedName("quartz_crops")
 		.setCreativeTab(RabbitUtilities.RabbitTab);
 		
 		//template blocks
@@ -87,7 +100,8 @@ public class RabbitBlocks {
 		GameRegistry.registerBlock(jump_scare, jump_scare.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(ritual_table_basic, ritual_table_basic.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(flesh_crops, flesh_crops.getUnlocalizedName().substring(5));
-		
+		GameRegistry.registerBlock(elevator_block, elevator_block.getUnlocalizedName().substring(5));
+		GameRegistry.registerBlock(quartz_crops, quartz_crops.getUnlocalizedName().substring(5));
 	}
 	
 	public static void registerRenders()
@@ -103,6 +117,8 @@ public class RabbitBlocks {
 		registerRender(jump_scare);
 		registerRender(ritual_table_basic);
 		registerRender(flesh_crops);
+		registerRender(elevator_block);
+		registerRender(quartz_crops);
 	}
 	
 	public static void registerRender(Block b)

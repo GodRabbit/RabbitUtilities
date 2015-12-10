@@ -53,6 +53,9 @@ public class RabbitItems {
 	public static Item flesh_scythe;
 	public static Item nether_flour;
 	public static Item nether_bread;
+	public static Item quartz_seeds;
+	public static Item lapis_flour;
+	public static Item lapis_bread;
 	
 	
 	public static void init()
@@ -183,6 +186,17 @@ public class RabbitItems {
 		.setUnlocalizedName("nether_bread")
 		.setCreativeTab(RabbitUtilities.RabbitTab);
 		
+		quartz_seeds=new QuartzSeedsItem()
+		.setUnlocalizedName("quartz_seeds")
+		.setCreativeTab(RabbitUtilities.RabbitTab);
+		
+		lapis_flour=new LapisFlourItem()
+		.setUnlocalizedName("lapis_flour")
+		.setCreativeTab(RabbitUtilities.RabbitTab);
+		
+		lapis_bread=new LapisBreadItem()
+		.setUnlocalizedName("lapis_bread")
+		.setCreativeTab(RabbitUtilities.RabbitTab);
 	}
 	
 	public static void register()
@@ -218,6 +232,9 @@ public class RabbitItems {
 		GameRegistry.registerItem(flesh_scythe, flesh_scythe.getUnlocalizedName().substring(5));
 		GameRegistry.registerItem(nether_flour, nether_flour.getUnlocalizedName().substring(5));
 		GameRegistry.registerItem(nether_bread, nether_bread.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(quartz_seeds, quartz_seeds.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(lapis_flour, lapis_flour.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(lapis_bread, lapis_bread.getUnlocalizedName().substring(5));
 	}
 	
 	public static void registerRenders()
@@ -253,6 +270,9 @@ public class RabbitItems {
 		registerRender(flesh_scythe);
 		registerRender(nether_flour);
 		registerRender(nether_bread);
+		registerRender(quartz_seeds);
+		registerRender(lapis_flour);
+		registerRender(lapis_bread);
 	}
 	
 	public static void registerRender(Item item)

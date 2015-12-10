@@ -53,7 +53,10 @@ public class FleshWings extends Item{
 		Vec3 look=player.getLookVec();
 		look=look.normalize();
 		player.setVelocity(look.xCoord*state, look.yCoord*state,look.zCoord*state);
-		stack.getTagCompound().setDouble("state", 0.1);
+		if(stack.getTagCompound() == null)
+			stack.setTagCompound(new NBTTagCompound());
+		if(!stack.getTagCompound().hasKey("state"))
+			stack.getTagCompound().setDouble("state", 0.1);
 		
 		//super.onPlayerStoppedUsing(stack, worldIn, player, timeLeft);
 	}
